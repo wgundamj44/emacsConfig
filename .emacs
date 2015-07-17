@@ -22,6 +22,12 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "M-x") 'helm-M-x)
+;; helm-grep
+(global-set-key (kbd "C-c g")
+                (lambda () (interactive)
+                  (setq current-prefix-arg '(4)) ; C-u
+                  (helm-do-grep)))
+
 
 ;; ido
 (ido-mode t)
@@ -35,6 +41,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
  '(frame-background-mode (quote light)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -48,8 +57,6 @@
 ;; Standard Jedi.el setting
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
-;; jedi direx
-(add-hook 'jedi-mode-hook 'jedi-direx:setup)
 
 
 ;; hightlight currernt line
@@ -67,3 +74,25 @@
 
 ;; turn on flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+
+;; web-mode
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-enable-current-column-highlight t)
+  )
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+
+
+;; use soft tab
+(setq-default indent-tabs-mode nil)
+
+
+;; disable backup file
+(setq make-backup-files nil)
+

@@ -14,6 +14,7 @@
     company-jedi
     flycheck
     flx-ido
+    web-mode
     ) "A list of packages to ensure on startup")
 
 (add-to-list 'package-archives
