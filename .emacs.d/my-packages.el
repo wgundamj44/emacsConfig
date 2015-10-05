@@ -5,6 +5,7 @@
     yasnippet
     company
     helm
+    helm-imenu
     projectile
     helm-projectile
     js2-mode
@@ -15,6 +16,7 @@
     flycheck
     flx-ido
     web-mode
+    emmet-mode
     ) "A list of packages to ensure on startup")
 
 (add-to-list 'package-archives
